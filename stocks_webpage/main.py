@@ -1,11 +1,9 @@
 # Assignment: Custom API Based Website
 """
 Build a custom website using an API that you find interesting.
-
 Using what you have learnt about HTTP request and REST APIs, in today's project you will build a website that uses data from a public API.
 For example, previously we create a rain alert app using a weather API. We also created an ISS tracker and looking into Bitcoin prices, all using a public API.
 Today, you get to work on an API that you find interesting and build a service or website based on that API.
-
 Here are some example APIs:
 New York Subway Data
 Elephant Data
@@ -33,7 +31,6 @@ After obtaining API Data,
         GRAPH CAN BE VASTLY IMPROVED USING JAVASCRIPT(instead of static image)... BUT PROJECT DONE USING FLASK
         and stock market prices can be showed along with cursor selection
     https://www.w3schools.com/ai/ai_chartjs.asp -->Javascript
-
 -(FIXED) Insert image with fixed dimension HTML
 https://stackoverflow.com/questions/46730667/how-to-display-image-of-any-size-in-a-fixed-size-100x100-div
 -(FIXED) Date: Slicing strings (not split)
@@ -46,18 +43,17 @@ https://stackoverflow.com/questions/46730667/how-to-display-image-of-any-size-in
  Reload HTML image flask 
  >>>INTRODUCED SWITCH TO RELOAD HTML ELEMENT MANUALLY BASED ON CONDITIONAL-- Works only for 1st reload; subsequently will cache current image
  >>>ADDED FILE NAME FOR DIFFERENT STOCK NAMES TO IMAGE PATH
- 
+
  flask form use button name as button value
  how to setup flaskform with click to submit value?
  how to setup flaskform with dynamic buttons
- 
+
 #IMPROVEMENTS: (Limited bcos of free API usage; dont want to incur charges)
 ----------------------------------------------------------------------------------------------
 STONKS! Outlook can be rendered with dynamic data from API; then display bar according to 
 % profit; if >10%-green; 10%<x<15% teal; etc
 % risk; 
 % values madeup arbitrarily
-
 Stock Market Data
 https://marketstack.com/quickstart
 Website layout reference:
@@ -424,7 +420,7 @@ def api_call_plot_graph(symbol, entry_count, date_range):
 
     # entry_count = 5
 
-    #If restricted by date_range, date_range < entry_count
+    # If restricted by date_range, date_range < entry_count
     if len(stock_list) > date_range:
         daily_average = daily_average[len(stock_list) - date_range:]
         high_y = high_y[len(stock_list) - date_range:]
@@ -434,14 +430,13 @@ def api_call_plot_graph(symbol, entry_count, date_range):
         date_x = date_x[len(stock_list) - date_range:]
     else:
         pass
-    if entry_count!=0:
+    if entry_count != 0:
         daily_average = daily_average[0:entry_count - 1]
         high_y = high_y[0:entry_count - 1]
         low_y = low_y[0:entry_count - 1]
         open_y = open_y[0:entry_count - 1]
         close_y = close_y[0:entry_count - 1]
         date_x = date_x[0:entry_count - 1]
-
 
     monthly_total = 0
     for item in daily_average:
@@ -524,10 +519,10 @@ def home():
     # cache.init_app(app)
     # cache.clear()
 
-    if request.args.get('date_range')!= None:
+    if request.args.get('date_range') != None:
         date_range = request.args.get('date_range')
     print(f"date_range: {date_range}")
-    if request.args.get('entry_count')!= None:
+    if request.args.get('entry_count') != None:
         entry_count = request.args.get('entry_count')
     print(entry_count)
 
@@ -539,7 +534,7 @@ def home():
     if date_range != 0:
         api_call_plot_graph(SYMBOLS, 0, int(date_range))
     if entry_count != 0:
-        api_call_plot_graph(SYMBOLS, int(entry_count),int(date_range))
+        api_call_plot_graph(SYMBOLS, int(entry_count), int(date_range))
 
     filename = filename
     print(filename)
